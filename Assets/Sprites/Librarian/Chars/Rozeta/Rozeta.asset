@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a62c8413b9b20e4ca608bfe1fb4dfdd, type: 3}
+  m_Name: Rozeta
+  m_EditorClassIdentifier: 
+  id: 38
+  name_: "\uB85C\uC81C\uD0C0"
+  poses:
+  - {fileID: 21300000, guid: 3a470dc7f21bbd94a98adb54345d38cb, type: 3}
+  - {fileID: 21300000, guid: 3c55c083226042147a2f1bce76d0490d, type: 3}
+  - {fileID: 21300000, guid: 92e5bc850c8015f43a4cfe3b67078b38, type: 3}
+  - {fileID: 21300000, guid: e45af49fd2d507e48ba0ec6cc86ff8ef, type: 3}
+  - {fileID: 21300000, guid: 9ca4d6ac4c37b4e4bb2e5c8cbd65d333, type: 3}
+  farAtk: 0
+  atkEffect: {fileID: 281342739834664552, guid: 1d57d53199505f348b71b86df95e4aca, type: 3}
+  atkSound: Slash2

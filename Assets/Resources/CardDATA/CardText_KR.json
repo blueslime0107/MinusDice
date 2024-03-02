@@ -1,0 +1,113 @@
+{
+    "cardList":[
+        {
+            "Id": 1,
+            "Name": "의식실패",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        },
+        {
+            "Id": 2,
+            "Name": "엑스칼리버",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        },
+        {
+            "Id": 3,
+            "Name": "완벽한 모범생",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        },
+        {
+            "Id": 4,
+            "Name": "평행세계",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        }
+        ,
+        {
+            "Id": 5,
+            "Name": "숟가락 살인마",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        },
+        {
+            "Id": 6,
+            "Name": "정신지배드론",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        },
+        {
+            "Id": 7,
+            "Name": "치명적인 일격",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        },
+        {
+            "Id": 8,
+            "Name": "레이븐콜",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        },
+        {
+            "Id": 9,
+            "Name": "비상식량",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        },
+        {
+            "Id": 10,
+            "Name": "D6",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        },
+        {
+            "Id": 11,
+            "Name": "도굴꾼",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        },
+        {
+            "Id": 12,
+            "Name": "눈알CCTV",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        },
+        {
+            "Id": 13,
+            "Name": "시들은 클로버",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        },
+        {
+            "Id": 14,
+            "Name": "솎아내기",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        },
+        {
+            "Id": 15,
+            "Name": "Glock-17",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        },
+        {
+            "Id": 16,
+            "Name": "책장정리",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        },
+        {
+            "Id": 17,
+            "Name": "핏빛 기억",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        },
+        {
+            "Id": 18,
+            "Name": "404",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "cardList": [
+        {
+            "Id": 1,
+            "Name": "dfdfdf",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        },
+        {
+            "Id": 1,
+            "Name": "New Card",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        },
+        {
+            "Id": 1,
+            "Name": "엑스칼리버",
+            "Flavor": "지존 최강의 칼",
+            "Image": "NULL"
+        },
+        {
+            "Id": 1,
+            "Name": "New Card",
+            "Flavor": "The Brand New Game",
+            "Image": "NULL"
+        }
+    ]
+}

@@ -4,11 +4,38 @@ using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
+[System.Serializable]
 public class BattleRoom{
     public Character attacker;
     public Character defender;
     public int damage;
     public bool battleProcessing = true;
+    public bool updateProcessing = true;
+
+    public List<CardPack> activedCards = new List<CardPack>(); 
+
+    public void AtStart(){
+        updateProcessing = true;
+    } 
+
+    public IEnumerator UpdateCardEvent(){
+        while(true){
+        List<CardAbility> abilist = StageManager.init.checkEffectOFAllCards(this);
+        for (int i = 0; i < abilist.Count; i++)
+        {
+            abilist[i].Affect();
+            activedCards.Add(abilist[0].card);
+        }
+         Debug.Log(abilist.Count);
+        if(abilist.Count == 0){
+            TakeDamage();
+        }
+        if(!battleProcessing){
+            break;
+        }
+        yield return null;
+        }
+    }
 
     public void TakeDamage(){
     if(damage > 0){
@@ -69,6 +96,9 @@ public class BattleManager : MonoBehaviour
         StageManager.init.gameCamera.objectsToInclude.Add(attacker.gameObject);
         StageManager.init.gameCamera.objectsToInclude.Add(defender.gameObject);
 
+        attacker.GetState(CharState.IsInClash);
+        defender.GetState(CharState.IsInClash);
+
         battleBG_Black.SetActive(true);
         StartCoroutine(BattleCorutine());
     }
@@ -99,17 +129,24 @@ public class BattleManager : MonoBehaviour
        yield return new WaitForSeconds(0.5f);
 
        if(attacker.diceValue > defender.diceValue){
+        attacker.GetState(CharState.Winner);
+        defender.GetState(CharState.Loser);
         MakeBattleRoom(attacker, defender, Math.Abs(attacker.diceValue - defender.diceValue));
        } 
        else{
+        defender.GetState(CharState.Winner);
+        attacker.GetState(CharState.Loser);
         MakeBattleRoom(defender,attacker , Math.Abs(attacker.diceValue - defender.diceValue));
        }
 
        
        while(battleRooms.Count > 0){
+        StartCoroutine(battleRooms[0].UpdateCardEvent());
         while(battleRooms[0].battleProcessing){
+           
             yield return null;
         }
+        Debug.Log("Breaked");
         yield return new WaitForSeconds(1f);
         battleRooms.RemoveAt(0);
         yield return null;
@@ -122,7 +159,7 @@ public class BattleManager : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
 
        MatchEnd(); 
 
@@ -134,10 +171,19 @@ public class BattleManager : MonoBehaviour
        defender.diceValue = 0;
     }
 
+
+
     public void MatchEnd(){
 
         attacker.changePose(1);
         defender.changePose(1);
+
+        attacker.RemoveState(CharState.Winner);
+        attacker.RemoveState(CharState.Loser);
+        attacker.RemoveState(CharState.IsInClash);
+        defender.RemoveState(CharState.Winner);
+        defender.RemoveState(CharState.Loser);
+        defender.RemoveState(CharState.IsInClash);
 
 
         attacker.movingObj.MoveToTarget(attacker.originPosition,2f,true);
@@ -155,4 +201,8 @@ public class BattleManager : MonoBehaviour
         newRoom.damage = damage;
         battleRooms.Add(newRoom);
     } 
+
+    public BattleRoom CurRoom(){
+        return battleRooms[0];
+    }
 }

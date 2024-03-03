@@ -82,6 +82,7 @@ public class StageManager : MonoBehaviour
     [Header("Editor Data")]
 
     [SerializeField] public List<CardCollect> collectCards;
+    [SerializeField] public List<CardPack> allGameCards;
     public Character touchingChar;
     public Character holdingViewLockChar;
     [SerializeField] int howManyDice;
@@ -249,16 +250,11 @@ public class StageManager : MonoBehaviour
 
         float term = newSize / (objectCount-1);
         if(term > maxObjectSpacing){
-            Debug.Log("OVered");
             term = maxObjectSpacing;
             newSize = term * (objectCount-1); 
         }
-
-        Debug.Log("TERM"+term);
-
         for (int i = 0; i < objectCount; i++)
         {
-            Debug.Log(term * i - newSize*0.5f);
             xValues.Add(term * i - newSize*0.5f); 
 
         }
@@ -313,5 +309,26 @@ public class StageManager : MonoBehaviour
                 refreshViewCharCards();
             }
         }
+    }
+
+    public List<CardAbility> checkEffectOFAllCards(BattleRoom battleRoom){
+        List<CardAbility> newList = new List<CardAbility>();
+        for (int i = 0; i < allGameCards.Count; i++)
+        {   
+            for (int j = 0; j < allGameCards[i].cardAbilities.Count; j++)
+            {
+                if(battleRoom != null){
+                if(allGameCards[i].cardAbilities[j].Condition() && !battleRoom.activedCards.Contains(allGameCards[i])){
+                    newList.Add(allGameCards[i].cardAbilities[j]);
+                    battleRoom.activedCards.Add(allGameCards[i]);
+                }
+                }
+                else{
+                if(allGameCards[i].cardAbilities[j].Condition())
+                    newList.Add(allGameCards[i].cardAbilities[j]);
+                }
+            }
+        }
+        return newList;
     }
 }

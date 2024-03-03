@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CardAbility{
-    public virtual bool Condition(CardPack card){return true;}
-    public virtual void Affect(CardPack card){}
+    public CardPack card;
+    public virtual bool Condition(){return true;}
+    public virtual void Affect(){}
 }
 
 [System.Serializable]
@@ -28,18 +30,13 @@ public class CardPack
             {
                 // 하위 클래스들의 CardAbility 클래스들을 리스트에 넣는다 
                 object nestedInstance = System.Activator.CreateInstance(nestedType);
+                CardAbility cardA = (CardAbility)nestedInstance;
+                cardA.card = this;
                 cardAbilities.Add((CardAbility)nestedInstance);
             }
         }
     }
 
-
-    public bool ClashWinned(){
-        return BattleManager.init.clashWinner == owner;
-    }
-    public void SetClashDamage(int dam){
-        BattleManager.init.clashDamage = dam;
-    }
 }
 
 

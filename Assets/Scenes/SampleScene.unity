@@ -533,7 +533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 814076158060022477, guid: 479c904db0579cc4b82dac61a3ea2bd2, type: 3}
       propertyPath: preView_cards.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 814076158060022477, guid: 479c904db0579cc4b82dac61a3ea2bd2, type: 3}
       propertyPath: preView_cards.Array.data[0]
@@ -2314,6 +2314,7 @@ MonoBehaviour:
   - {fileID: 968194385}
   holdingCards: []
   collectCards: []
+  allGameCards: []
   touchingChar: {fileID: 0}
   holdingViewLockChar: {fileID: 0}
   howManyDice: 6
@@ -2653,13 +2654,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacker: {fileID: 0}
   defender: {fileID: 0}
-  clashWinner: {fileID: 0}
-  clashLoser: {fileID: 0}
-  clashDamage: 0
   curState: 0
   clashRightPosition: {x: 0.5, y: 0, z: 0}
   clashLeftPosition: {x: -0.5, y: 0, z: 0}
   battleBG_Black: {fileID: 1400996537}
+  battleRooms: []
 --- !u!1 &1995674317
 GameObject:
   m_ObjectHideFlags: 0

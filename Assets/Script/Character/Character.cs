@@ -5,8 +5,8 @@ using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum State{
-    Winner, Loser
+public enum CharState{
+    Winner, Loser, IsInClash
 }
 
 public class Character : MonoBehaviour
@@ -21,11 +21,11 @@ public class Character : MonoBehaviour
     public List<CardPack> cards = new List<CardPack>();
 
     public List<int> breakPoints = new List<int>();
+    public List<CharState> charStates = new List<CharState>();
 
     [Header("Editor Data")]
     public bool isMouseTouching;
 
-    public List<string> charTags = new List<string>();
     public List<CardData> preView_cards = new List<CardData>();
     public Costume costume;
     
@@ -56,6 +56,9 @@ public class Character : MonoBehaviour
         newCardPack.cardData = cardData;
         newCardPack.owner = this;
         newCardPack.Init();
+        if(StageManager.init){
+        StageManager.init.allGameCards.Add(newCardPack);
+        }
         cards.Add(newCardPack);
     }
 
@@ -76,6 +79,18 @@ public class Character : MonoBehaviour
             }
         }
         hPIndicator.refreshData(this);
+    }
+
+    public void GetState(CharState state){
+        charStates.Add(state);
+    }
+
+    public bool HasState(CharState state){
+        return charStates.Contains(state);
+    }
+
+    public bool RemoveState(CharState state){
+        return charStates.Remove(state);
     }
     // Update is called once per frame
     
